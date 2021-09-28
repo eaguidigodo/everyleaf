@@ -1,24 +1,36 @@
-# README
+# todos
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* todos_id: int
 
-Things you may want to cover:
+* todos_name: string(50)
 
-* Ruby version
+* users_id: int
 
-* System dependencies
+# users
 
-* Configuration
+* users_id: int
 
-* Database creation
+* username: string(50)
 
-* Database initialization
+* email: string(50)
 
-* How to run the test suite
+* password: string(50)
 
-* Services (job queues, cache servers, search engines, etc.)
+# tasks
 
-* Deployment instructions
+* tasks_id: int
 
-* ...
+* todos_id: int
+
+* tasks_name: string(50)
+
+* deadline: date
+
+* status: string(50)
+
+* priority: string(50)
+
+* label: string(50)
+
+# NB: tasks will be todos's nested properties
+
