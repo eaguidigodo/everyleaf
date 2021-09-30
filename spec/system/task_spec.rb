@@ -1,11 +1,10 @@
 require 'rails_helper'
 RSpec.describe 'Task management function', type: :system do
-
     before do
         FactoryBot.create(:task)
         FactoryBot.create(:second_task)
+        visit tasks_path
     end
-
 
   describe 'New creation function' do
     context 'When creating a new task' do
@@ -27,12 +26,25 @@ RSpec.describe 'Task management function', type: :system do
       end
     end
   end
+
+  context 'When tasks are arranged in descending order of creation date and time' do
+    it 'New task is displayed at the top' do
+     # Task.order_by_created_at
+     task_list = all('.task_row') 
+     puts "Ici task list: #{task_list.to_json}"
+      puts "Ici task list de zero: #{task_list[0].to_json}"
+      #expect(page).to include("Title 2 made by Factory")
+      expect(task_list[0]).to include("Title 2 made by Factory")
+    end
+  end
+
   describe 'Detailed display function' do
      context 'When transitioned to any task details screen' do
        it 'The content of the relevant task is displayed' do
        end
      end
   end
+
 
 #   background do
 #     FactoryBot.create(:task, title: 'Added name 1')
