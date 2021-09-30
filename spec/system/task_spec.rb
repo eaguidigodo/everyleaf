@@ -29,12 +29,9 @@ RSpec.describe 'Task management function', type: :system do
 
   context 'When tasks are arranged in descending order of creation date and time' do
     it 'New task is displayed at the top' do
-     # Task.order_by_created_at
+      visit tasks_path
      task_list = all('.task_row') 
-     puts "Ici task list: #{task_list.to_json}"
-      puts "Ici task list de zero: #{task_list[0].to_json}"
-      #expect(page).to include("Title 2 made by Factory")
-      expect(task_list[0]).to include("Title 2 made by Factory")
+      expect(task_list[0]).to  have_content "Title 2 made by Factory"
     end
   end
 

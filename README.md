@@ -48,5 +48,5 @@ For heroku deployment, first create an account on heroku and then run the follow
 
 *heroku buildpacks:add --index 1 heroku/nodejs
 
-*git push heroku main
+*git push heroku step2:main
 
