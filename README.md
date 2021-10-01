@@ -50,3 +50,5 @@ For heroku deployment, first create an account on heroku and then run the follow
 
 *git push heroku step2:main
 
+*heroku run rails  db:migrate 
+
