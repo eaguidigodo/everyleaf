@@ -10,6 +10,10 @@ class TasksController < ApplicationController
   def show
   end
 
+  def descending_date
+    @tasks = Task.all.order("deadline desc")
+  end
+  
   # GET /tasks/new
   def new
     @task = Task.new
