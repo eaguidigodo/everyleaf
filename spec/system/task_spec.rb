@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe 'Task management function', type: :system do
     before do
+        FactoryBot.create(:third_task)
         FactoryBot.create(:task)
         FactoryBot.create(:second_task)
         visit tasks_path
@@ -12,6 +13,7 @@ RSpec.describe 'Task management function', type: :system do
         visit new_task_path
         fill_in 'task[name]', with: "rails"
         fill_in 'task[detail]', with: "Ruby on rails"
+        fill_in 'task[deadline]', with: '2022-02-10'
         click_on 'Create Task'
         expect(page).to have_content 'on rails'
       end
@@ -40,6 +42,17 @@ RSpec.describe 'Task management function', type: :system do
        it 'The content of the relevant task is displayed' do
        end
      end
+  end
+
+  describe 'Sorting by end deadlines' do
+    context 'When sorting by end deadlines' do
+      it 'Tasks are displayed in descending order' do
+        visit tasks_path
+        click_on 'sort by end deadline'
+        task_list = all('.task_row')
+        expect(task_list[0]).to have_content "Title 3"
+      end
+    end
   end
 
 
