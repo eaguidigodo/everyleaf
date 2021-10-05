@@ -3,13 +3,12 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
+    puts "ici la valeur de select #{params[:search_status].to_s.strip.empty?}"
     if params[:search] 
       @tasks = Task.search(params[:search])
-      if params[:search_status]
+      if !params[:search_status].to_s.strip.empty?
         @tasks = @tasks.select{ |task| task.status == params[:search_status] }
-    else
-      raise
-    end
+      end
     elsif params[:search_status]
       @tasks = Task.all
       @tasks = @tasks.select{ |task| task.status == params[:search_status] }
