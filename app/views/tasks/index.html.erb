@@ -22,10 +22,13 @@
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-    <td><%= link_to 'Sort by the deadline', order_path %></td>
   </tbody>
 </table>
-
+<% if @sort_expired %>
+  <%= link_to "Back", tasks_path %>
+<% else %>
+  <%= link_to " sort by end deadline", tasks_path(sort_expired: "true") %>
+<% end %>
 <br>
 
 <%= link_to 'New Task', new_task_path %>
