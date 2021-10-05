@@ -2,11 +2,22 @@
 
 <h1>Tasks</h1>
 
+<h4>Search by title: </h4>
+  <%= form_tag(tasks_path, method: :get) do |f| %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= select_tag(:search_status, options_for_select(Task.distinct.pluck(:status) ,:selected =>params[:search_status]), include_blank: true  )%>   
+     <%= submit_tag("Search") %>
+  <% end %>
+
+  <h4>Search by status: </h4>
+
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Detail</th>
+      <th>Status</th>
+      <th>Deadline</th>
       <th colspan="3"></th>
     </tr>
   </thead>
