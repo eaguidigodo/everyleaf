@@ -8,7 +8,7 @@ FactoryBot.define do
 
   factory :task do
     name { 'Title 1 made by Factory' }
-    detail { 'Default content created by Factory 1' }
+    detail { 'Default content created by Factory 2' }
     deadline {'2010-10-01'}
   end
   # Name the test data to be created "second_task"
