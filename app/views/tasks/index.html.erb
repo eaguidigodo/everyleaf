@@ -24,6 +24,7 @@
   </thead>
 
   <tbody>
+  <%= paginate @tasks %>
     <% @tasks.each do |task| %>
       <tr>
         <td class="task_row"><%= task.name %></td>  
