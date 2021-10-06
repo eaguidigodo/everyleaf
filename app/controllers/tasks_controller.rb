@@ -21,7 +21,7 @@ class TasksController < ApplicationController
         @tasks = Task.all.order("created_at desc")
       end
     end
-    @tasks = @tasks.page(params[:page]).per(5)
+    @tasks = Kaminari.paginate_array(@tasks).page(params[:page]).per(5)
   end
 
   # GET /tasks/1 or /tasks/1.json
