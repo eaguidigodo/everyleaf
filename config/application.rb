@@ -12,7 +12,6 @@ module Everyleaf
 
     config.time_zone = 'Africa/Porto-Novo'
     config.active_record.default_timezone = :local
-    
 
     config.generators do |g|
       g.test_framework :rspec,
