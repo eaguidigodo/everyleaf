@@ -91,6 +91,17 @@ RSpec.describe 'Task management function', type: :system do
     end
   end
 
+  describe 'Test priority function' do
+    context 'When click on sort by priority,' do
+      it 'tasks are listed by priority' do
+        visit tasks_path
+        click_on 'sort by priority'
+        task_list = all(".task_row")
+        expect(task_list[0]).to have_content 'Title 3'
+      end
+    end
+  end
+
   
 
 

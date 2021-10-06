@@ -5,6 +5,7 @@ FactoryBot.define do
     detail { 'Default content created by Factory 1' }
     deadline {'2024-10-01'}
     status {'unstarted'}
+    priority {'High'}
   end
 
   factory :task do
@@ -12,6 +13,7 @@ FactoryBot.define do
     detail { 'Default content created by Factory 2' }
     deadline {'2010-10-01'}
     status {'in progress'}
+    priority {'Medium'}
   end
   # Name the test data to be created "second_task"
   # (If you want to name a class that does not exist, optionally specify "Please use test data for this class")
@@ -20,5 +22,6 @@ FactoryBot.define do
     detail { 'Default content 2 made by Factory' }
     deadline { '2022-02-10' }
     status {'completed'}
+    priority {'Low'}
   end
 end
