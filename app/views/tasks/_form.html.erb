@@ -31,6 +31,11 @@
     <%= form.select :status, ['unstarted', 'in progress', 'completed'] %>
   </div>
 
+  <div class="field">
+    <%= form.label :priority %>
+    <%= form.select :priority, ['Low', 'Medium', 'High'] %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
