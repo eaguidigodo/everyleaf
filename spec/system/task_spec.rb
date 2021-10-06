@@ -14,6 +14,7 @@ RSpec.describe 'Task management function', type: :system do
         fill_in 'task[name]', with: "rails"
         fill_in 'task[detail]', with: "Ruby on rails"
         fill_in 'task[deadline]', with: '2022-02-10'
+        select 'unstarted', from: 'task[status]'
         click_on 'Create Task'
         expect(page).to have_content 'on rails'
       end
@@ -54,6 +55,44 @@ RSpec.describe 'Task management function', type: :system do
       end
     end
   end
+
+  describe 'Test search function by title' do
+    context 'When searchin by title' do
+      it 'content with search word is displayed if it exists' do
+        visit tasks_path
+        fill_in 'search', with: "Facto"
+        click_on 'Search'
+        expect(page).to have_content 'Title 1'
+        expect(page).to have_content 'Title 2'
+      end
+    end
+  end
+
+  describe 'Test search function by status' do
+    context 'When searchin by status' do
+      it 'content with given status are displayed if they exist' do
+        visit tasks_path
+        select 'unstarted', from: 'search_status'
+        click_on 'Search'
+        expect(page).to have_content 'Title 3'
+      end
+    end
+  end
+
+  describe 'Test search function by both title and status' do
+    context 'When searchin by title' do
+      it 'content with search word is displayed if it exists' do
+        visit tasks_path
+        fill_in 'search', with: "Facto"
+        select 'completed', from: 'search_status'
+        click_on 'Search'
+        expect(page).to have_content 'Title 2'
+      end
+    end
+  end
+
+  
+
 
 
 #   background do

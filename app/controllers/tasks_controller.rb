@@ -10,8 +10,7 @@ class TasksController < ApplicationController
         @tasks = @tasks.select{ |task| task.status == params[:search_status] }
       end
     elsif params[:search_status]
-      @tasks = Task.all
-      @tasks = @tasks.select{ |task| task.status == params[:search_status] }
+      @tasks = Task.search_status(params[:search_status])
     else
       if params[:sort_expired]
         @sort_expired = params[:sort_expired]
