@@ -11,6 +11,8 @@ class TasksController < ApplicationController
       end
     elsif params[:search_status]
       @tasks = Task.search_status(params[:search_status])
+    elsif params[:sort_priority]
+      @tasks = Task.all.order("priority desc")
     else
       if params[:sort_expired]
         @sort_expired = params[:sort_expired]
@@ -79,6 +81,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:name, :detail, :deadline, :status, :search, :search_status)
+      params.require(:task).permit(:name, :detail, :deadline, :status, :search, :search_status, :priority)
     end
 end
