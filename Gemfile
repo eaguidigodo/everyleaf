@@ -23,7 +23,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'faker'
+  gem 'faker', :require => false
   gem 'launchy'
 end
 
