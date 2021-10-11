@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         if @user.save
             redirect_to new_session_path
         else
-            render :new notice 'Account creation fails'
+            render :new, notice: 'Account creation fails'
         end
     end
 
@@ -19,6 +19,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:username, :email, :password, password_confirmation)
+        params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 end

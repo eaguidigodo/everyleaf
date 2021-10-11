@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rexml'
 gem 'kaminari'
+gem 'bcrypt-ruby', '3.1.5', :require => 'bcrypt'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
