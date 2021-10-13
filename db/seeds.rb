@@ -9,8 +9,10 @@ require 'faker'
 I18n.reload!
 name = Faker::Name.name
 email = Faker::Internet.email
-password = "password"
+password = "passwordlongshort"
 User.create!(username: name,
              email: email,
-             password_digest: password,
+             password: password,
+             password_confirmation: password,
+             is_admin: false
              )
