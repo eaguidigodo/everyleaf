@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rexml'
 gem 'kaminari'
+gem 'bcrypt-ruby', '3.1.5', :require => 'bcrypt'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
@@ -23,7 +24,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'faker'
+  gem 'faker', :require => false
   gem 'launchy'
 end
 

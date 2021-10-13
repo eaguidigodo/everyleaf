@@ -12,13 +12,13 @@ class TasksController < ApplicationController
     elsif params[:search_status]
       @tasks = Task.search_status(params[:search_status])
     elsif params[:sort_priority]
-      @tasks = Task.all.order("priority desc")
+      @tasks = current_user.tasks.order("priority desc")
     else
       if params[:sort_expired]
         @sort_expired = params[:sort_expired]
-        @tasks = Task.all.order("deadline desc")
+        @tasks = current_user.tasks.order("deadline desc")
       else
-        @tasks = Task.all.order("created_at desc")
+        @tasks = current_user.tasks.order("created_at desc")
       end
     end
     @tasks = Kaminari.paginate_array(@tasks).page(params[:page]).per(5)
@@ -26,6 +26,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1 or /tasks/1.json
   def show
+    @tasks = current_user.tasks.all
   end
   
   # GET /tasks/new
@@ -39,7 +40,7 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
 
     respond_to do |format|
       if @task.save
