@@ -26,7 +26,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1 or /tasks/1.json
   def show
-    @tasks = @user.tasks.all
+    @tasks = current_user.tasks.all
   end
   
   # GET /tasks/new
