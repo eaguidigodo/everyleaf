@@ -26,6 +26,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'faker', :require => false
   gem 'launchy'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do

@@ -11,4 +11,11 @@ FactoryBot.define do
     password { "anicetenselme" }
     is_admin {"true"}
   end
+
+  factory :third_user, class: User do 
+    username { "nuxlikage" }
+    email { "nuxlikage@gmail.com" }
+    password { "anicetenselme" }
+    is_admin {"false"}
+  end
 end

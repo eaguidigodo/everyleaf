@@ -60,4 +60,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  # ./spec/rails_helper.rb
+
+# start by truncating all the tables but then use the faster transaction strategy the rest of the time.
+
 end

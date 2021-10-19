@@ -5,7 +5,7 @@
 <h4>Search by title: </h4>
   <%= form_tag(tasks_path, method: :get) do |f| %>
     <%= text_field_tag(:search, params[:search]) %>
-    <%= select_tag(:search_status, options_for_select(Task.distinct.pluck(:status).uniq ,:selected =>params[:search_status])  )%>   
+    <%= select_tag(:search_status, options_for_select(Task.distinct.pluck(:status).uniq ,:selected =>params[:search_status]), include_blank: true  )%>   
      <%= submit_tag("Search") %>
   <% end %>
 
