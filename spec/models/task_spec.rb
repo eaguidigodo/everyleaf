@@ -2,6 +2,18 @@ require 'rails_helper'
 
 RSpec.describe 'Task model function', type: :model do
 
+  def user_login
+    visit new_session_path
+    fill_in 'session[email]', with: 'eaguidigodo@gmail.com'
+    fill_in 'session[password]', with: 'anicetenselme'
+    click_button 'Log in'
+  end
+
+  before do
+    @user = FactoryBot.create(:third_user)
+    user_login
+end
+
   describe 'Validation test' do
     context 'If the task Name is empty' do
       it "Task must not be registered" do

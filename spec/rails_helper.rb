@@ -63,5 +63,16 @@ RSpec.configure do |config|
   # ./spec/rails_helper.rb
 
 # start by truncating all the tables but then use the faster transaction strategy the rest of the time.
+config.before(:suite) do
+  DatabaseCleaner.strategy = :transaction
+  DatabaseCleaner.clean_with(:truncation)
+end
 
+config.before(:each) do
+  DatabaseCleaner.start
+end
+
+config.after(:each) do
+  DatabaseCleaner.clean
+end
 end

@@ -67,7 +67,7 @@ RSpec.describe 'Task management function', type: :system do
   end
 
   describe 'Test search function by title' do
-    context 'When searchin by title' do
+    context 'When searching by title' do
       it 'content with search word is displayed if it exists' do
         visit tasks_path
         fill_in 'search', with: "Facto"
