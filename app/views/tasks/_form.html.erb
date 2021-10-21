@@ -36,6 +36,11 @@
     <%= form.select :priority, ['Low', 'Medium', 'High'] %>
   </div>
 
+  <div class="field">
+    <%= form.label :tags %>
+    <%= form.text_field :all_tags, placeholder: "Tags sparated with comma" %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
