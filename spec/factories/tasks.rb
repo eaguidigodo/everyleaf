@@ -6,6 +6,7 @@ FactoryBot.define do
     deadline {'2024-10-01'}
     status {'unstarted'}
     priority {'High'}
+    all_tags {'red, blue'}
   end
 
   factory :task do
@@ -14,6 +15,7 @@ FactoryBot.define do
     deadline {'2010-10-01'}
     status {'in progress'}
     priority {'Medium'}
+    all_tags {'good, bad, red'}
   end
   # Name the test data to be created "second_task"
   # (If you want to name a class that does not exist, optionally specify "Please use test data for this class")
@@ -23,5 +25,6 @@ FactoryBot.define do
     deadline { '2022-02-10' }
     status {'completed'}
     priority {'Low'}
+    all_tags {'green'}
   end
 end

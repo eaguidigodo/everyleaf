@@ -101,6 +101,17 @@ RSpec.describe 'Task management function', type: :system do
     end
   end
 
+  describe 'Test search function by label' do
+    context 'When searchin by label' do
+      it 'content with label search word is displayed if it exists' do
+        visit tasks_path
+        select 'red', from: 'search_label'
+        click_on 'Search'
+        expect(page).to have_content 'Title 1'
+      end
+    end
+  end
+
   describe 'Test priority function' do
     context 'When click on sort by priority,' do
       it 'tasks are listed by priority' do
