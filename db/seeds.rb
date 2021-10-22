@@ -23,3 +23,60 @@ User.create!(username: "admin",
             password_confirmation: "adminpass",
             is_admin: true
             )
+
+10.times do |n|
+    name = Faker::Games::Pokemon.name
+    email = Faker::Internet.email
+    password = "userpassword"
+    User.create!(username: name,
+                email: email,
+                password: password,
+                password_confirmation: password,
+                is_admin: false
+                )
+end
+
+5.times do |n|
+    name = Faker::JapaneseMedia::Naruto.character
+    Task.create!(name: name,
+                detail: "New york",
+                deadline: Date.today,
+                status: "completed",
+                priority: "Low",
+                all_tags: "new, old, nice, out, red, color",
+                user_id: 1
+                )
+end
+
+2.times do |n|
+    name = Faker::JapaneseMedia::Naruto.village
+    Task.create!(name: name,
+                detail: "anti social",
+                deadline: Date.today,
+                status: "completed",
+                priority: "Low",
+                all_tags: "yellow, blue",
+                user_id: 1
+                )
+end
+
+
+    name = Faker::JapaneseMedia::Naruto.eye
+    Task.create!(name: name,
+                detail: "New tak",
+                deadline: Date.today,
+                status: "completed",
+                priority: "Low",
+                all_tags: "sad, happy, big, tall, small, done",
+                user_id: 1
+                )
+
+name = Faker::JapaneseMedia::Naruto.demon
+    Task.create!(name: name,
+                detail: "New tak",
+                deadline: Date.today,
+                status: "completed",
+                priority: "Low",
+                all_tags: "black, winner, good, bad",
+                user_id: 1
+                )
