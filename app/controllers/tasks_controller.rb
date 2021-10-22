@@ -4,24 +4,37 @@ class TasksController < ApplicationController
   # GET /tasks or /tasks.json
   def index
     #puts "ici la valeur de select #{params[:search_status].to_s.strip.empty?}"
-    if params[:search] 
+    if !params[:search].to_s.strip.empty?
       @tasks = Task.search(params[:search])
       if !params[:search_status].to_s.strip.empty?
-        @tasks = @tasks.select{ |task| task.status == params[:search_status] }
+        if !params[:search_label].to_s.strip.empty?
+         @tasks = Task.search(params[:search]).search_status(params[:search_status]).label_search(params[:search_label])
+        else
+          @tasks = Task.search(params[:search]).search_status(params[:search_status])
+        end
       end
-    elsif params[:search_status]
-      @tasks = Task.search_status(params[:search_status])
-    elsif params[:sort_priority]
+    elsif !params[:search_status].to_s.strip.empty?
+      if !params[:search_label].to_s.strip.empty?
+        @tasks = Task.search_status(params[:search_status]).label_search(params[:search_label])
+      else
+        @tasks = Task.search_status(params[:search_status])
+      end
+    elsif !params[:search_label].to_s.strip.empty?
+      
+      @tasks = Task.label_search(params[:search_label])
+     
+    elsif !params[:sort_priority].to_s.strip.empty?
       @tasks = current_user.tasks.order("priority desc")
     else
-      if params[:sort_expired]
-        @sort_expired = params[:sort_expired]
+      if !params[:sort_expired].to_s.strip.empty?
+        @sort_expired = params[:sort_expired].present? 
         @tasks = current_user.tasks.order("deadline desc")
       else
         @tasks = current_user.tasks.order("created_at desc")
       end
     end
     @tasks = Kaminari.paginate_array(@tasks).page(params[:page]).per(5)
+    #@tags = Tag.where(user_id: nil).or(Tag.where(user_id: current_user.id))
   end
 
   # GET /tasks/1 or /tasks/1.json

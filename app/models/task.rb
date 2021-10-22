@@ -10,6 +10,13 @@ class Task < ApplicationRecord
 
     scope :search, -> (param) { where("name LIKE ?" , "%#{param}%") }
 
+    scope :label_search, -> (param) { 
+
+        tasks = TaskTagRelation.where(tag_id: Tag.where(name: param).ids)
+         idss = tasks.map{ |task| task.task_id } 
+         where(id: idss) 
+    }
+
     scope :search_status, -> (param) { where(status: param) }
 
     def all_tags=(names)

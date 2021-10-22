@@ -41,6 +41,11 @@
     <%= form.text_field :all_tags, placeholder: "Tags sparated with comma" %>
   </div>
 
+   <%# Tag.all.each do |label| %>
+   <%# form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+  <% #label.name %>
+   <% #end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
